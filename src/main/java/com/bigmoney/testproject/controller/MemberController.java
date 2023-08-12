@@ -43,7 +43,10 @@ public class MemberController {
 		mv.setViewName("/member/detail");
 		return mv;		
 	}
-	
+	@GetMapping("/member/test")
+	public String ttt() {
+		return "home";
+	}
 	@PostMapping("/member/update")
 	public ModelAndView modify(@RequestParam Map<String, Object> map) {		
 		ModelAndView mv = new ModelAndView();
@@ -60,7 +63,7 @@ public class MemberController {
 	@PostMapping("/member/changePassword")
 	public ModelAndView changePassword_post(@RequestParam Map<String, Object> map
 			, HttpServletRequest request) {
-//		//여기 수정
+//		//�뿬湲� �닔�젙
 //		BCryptPasswordEncoder passwordEncoder = memberService.bCryptPasswordEncoder();
 		ModelAndView mv = new ModelAndView();
 		HttpSession session = request.getSession();
@@ -84,7 +87,7 @@ public class MemberController {
 	public ModelAndView review(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		String m_id =  (String) session.getAttribute("m_id");
-		// 기능구현 전이라 일단 고정 값으로 테스트 중 : b_id
+		// 湲곕뒫援ы쁽 �쟾�씠�씪 �씪�떒 怨좎젙 媛믪쑝濡� �뀒�뒪�듃 以� : b_id
 		String b_id = "1";
 		Map<String, Object> member =  memberService.getMember(m_id);
 		Map<String, Object> buy =  memberService.getBuy(b_id);
@@ -149,21 +152,21 @@ public class MemberController {
 	
 	@GetMapping("/member/loginFail")
 	public ModelAndView loginFail() { 
-		// 나중에 ajax로 바꿀 예정 
+		// �굹以묒뿉 ajax濡� 諛붽� �삁�젙 
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("login", "fail");
 		mv.setViewName("/member/login");
 		return mv;
 	}
 	
-	// /member/loginSuccess는 CustomLoginSuccessHandler에서 이동함
+	// /member/loginSuccess�뒗 CustomLoginSuccessHandler�뿉�꽌 �씠�룞�븿
 	
 	@GetMapping("/logout")
 	public ModelAndView logout(HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
 		HttpSession session = request.getSession();
 		session.invalidate();
-		mv.setViewName("redirect:/"); // 왜 홈화면이 아니라 로그인창으로 연결되지?
+		mv.setViewName("redirect:/"); // �솢 �솃�솕硫댁씠 �븘�땲�씪 濡쒓렇�씤李쎌쑝濡� �뿰寃곕릺吏�?
 		return mv;
 	}
 	
@@ -174,10 +177,10 @@ public class MemberController {
 	
 	@PostMapping("/member/regist")
 	public ModelAndView regist_post(@RequestParam Map<String, Object> map) {
-		System.out.println("가입하기 POST");
+		System.out.println("媛��엯�븯湲� POST");
 		ModelAndView mv = new ModelAndView();
 		String pwd1 = (String) map.get("m_pwd");
-//		// 여기 수정
+//		// �뿬湲� �닔�젙
 //		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 //		passwordEncoder = memberService.encodePasswordService(passwordEncoder);
 		String pwd2 = passwordEncoder.encode(pwd1);

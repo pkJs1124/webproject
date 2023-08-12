@@ -50,6 +50,7 @@
 
 
 		<!-- 메인홈페이지 설명용 이미지들 -->
+		
 		<section class="main_container">
 			<div class="container">
 				<div class="books main_leftop">
