@@ -1,4 +1,5 @@
 eclipse.preferences.version=1
+encoding//src/main/java/com/bigmoney/testproject/controller/ItemController.java=UTF-8
 encoding//src/main/java/com/bigmoney/testproject/controller/MemberController.java=UTF-8
 encoding//src/main/java/com/bigmoney/testproject/security/CustomAuthenticationProvider.java=UTF-8
 encoding//src/main/java/com/bigmoney/testproject/security/CustomLoginSuccessHandler.java=UTF-8

@@ -35,6 +35,7 @@ public class ItemController {
 		String id = itemService.insert(map);
 		if(id == null)
 			mav.setViewName("redirect:/create");
+		
 		else
 //			mav.setViewName("redirect:/detail?id="+id);
 			mav.setViewName("redirect:/select");
@@ -76,7 +77,7 @@ public class ItemController {
 	public ModelAndView select(HttpServletRequest req) {
 		HttpSession session =  req.getSession();
 		List<Map<String, Object>> allItems =  itemService.selectAll();		
-		// 디버깅용
+		// �뵒踰꾧퉭�슜
 		Consumer<Map<String, Object>> c = x -> {
 			System.out.printf("%s %s %s %s \n", 
 					x.get("id"), x.get("item_name"),x.get("f_id"),x.get("price"));
