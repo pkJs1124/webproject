@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-5.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+
+	<bean id="customAccessDenied" class="com.bigmoney.testproject.security.CustomAccessDeniedHandler"></bean>
+	<bean id="customLoginSuccess" class="com.bigmoney.testproject.security.CustomLoginSuccessHandler"></bean>
+	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"></bean>
+	<bean id="customUserDetailService" class="com.bigmoney.testproject.security.CustomUserDetailService"></bean>
+	<bean id="customAuthenticationProvider" class="com.bigmoney.testproject.security.CustomAuthenticationProvider"></bean>
+	
+	<security:http>
+		<security:csrf disabled="true"/>
+ 		<security:intercept-url pattern="/member/**" access="permitAll"/>  
+		
+<!-- 		<security:intercept-url pattern="member/detail" access="hasRole('ROLE_MEMBER')"/> -->
+<!-- 		<security:intercept-url pattern="/sample/admin" access="hasRole('ROLE_ADMIN')"/> -->
+		
+		<security:access-denied-handler ref="customAccessDenied" />
+		
+		<security:form-login 
+		login-page="/member/login" 
+		login-processing-url="/login.do"
+		authentication-success-handler-ref="customLoginSuccess"
+		authentication-failure-url="/member/loginFail"
+		/>
+		
+		<security:logout logout-url="/member/logout" invalidate-session="true"/>
+	</security:http>
+	
+	<security:authentication-manager>
+		<security:authentication-provider ref="customAuthenticationProvider"/>
+		<security:authentication-provider user-service-ref="customUserDetailService">
+  			<!-- 
+  			<security:jdbc-user-service   
+  			data-source-ref="dataSource"   
+  			users-by-username-query="select m_name from member where m_id = ?"   
+ 			authorities-by-username-query="select m_id, auth from member where m_id = ?"/>  
+ 			<security:password-encoder ref="customPasswordEncoder"/>  
+ 			 -->
+			<security:password-encoder ref="bcryptPasswordEncoder"/>
+		</security:authentication-provider>
+	</security:authentication-manager>
+
+</beans>

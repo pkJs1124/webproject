@@ -1,0 +1,218 @@
+*{
+	font-family: 'Diphylleia', serif;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+@import
+	url('https://fonts.googleapis.com/css2?family=Diphylleia&display=swap')
+	;
+	
+
+li {
+	list-style: none;
+}
+a{
+	color: black;
+  	text-decoration: none;
+  	transition: all 0.2s ease-in;
+}
+a:hover{
+	color:#a6a6a6;
+}
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+/*영역들 */
+
+#page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.container {
+  display:flex;
+  justify-content: space-between; 
+  overflow:hidden;
+  text-align: center;
+}
+.header{
+	background: #f5f3ed;
+	height: 50px;
+  text-align: center;
+  line-height: 50px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-shadow: 0 2px 20px rgba(245, 243, 237, 1); 
+  z-index: 1;
+
+}
+.header::after {
+  content: '';
+  position: absolute;
+  top: 19px;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  background: linear-gradient(to bottom,rgba(245, 243, 237, 0), rgba(245, 243, 237, 15)); /* 그라데이션 효과를 생성합니다. */
+  z-index: -1;
+}
+.main_container, .product_container {
+margin-top:50px;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.main_container{
+	background:  #f5f3ed;
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    min-height: 300px;
+    max-height: 300px; 
+	flex:1;
+}
+.product_container {
+	margin-top:350px;
+	background:  #f5f3ed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* 화면 높이에 맞게 섹션을 가운데로 정렬합니다. */
+
+  }
+
+
+
+.product_list{
+	display: flex;
+	width:1000px;
+    flex-direction: row; 
+    justify-content: space-between;
+}
+
+
+/*상품들*/
+.first-item {
+	margin-left: 0;
+	margin-right: 0.5em;
+}
+
+.second-item{
+	margin-right: 0.5em;
+}
+.last-item {
+	 margin-right: 0;
+}
+
+
+/* 메뉴바 */
+
+.menubar.bookdata{
+	display: flex;
+  	justify-content: space-between;
+}
+.bookdata {
+	margin-left: 0.5em;
+}
+
+.menu{
+ position:fixed;
+}
+.mainlogo{
+	padding-left:10px;
+}
+.text-center{
+    margin: 0 auto;
+}
+.text-right{
+	padding-right:10px;
+}
+
+
+
+/*main 소개*/
+.main_container{
+	position: absolute;
+  padding: 10px;
+  color: white;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  witdh:1000px;
+  height:700px;
+}
+
+.main_rightbottom{
+right:0px;
+bottom:0px;
+flex:5;
+}
+.main_rightop{
+right:0px;
+top:0px;
+flex:4;
+}
+.main_leftop{
+top:0px;
+left:0px;
+flex:3;
+}
+/*테스트 square*/
+.square1 .square2 .square3 {
+	width: 100px;
+ 	height: 50px;
+  	
+}
+.square1 {
+  background-color: blue;
+  top: 50px;
+  left: 50px;
+  z-index: 3; /* 겹치는 우선순위 설정 */
+}
+
+.square2 {
+  background-color: green;
+  top: 75px;
+  left: 75px;
+  z-index: 2;
+}
+
+.square3 {
+  background-color: red;
+  top: 100px;
+  left: 100px;
+  z-index: 1;
+}
+
+
+
+/* disactive 클래스가 적용된 요소의 스타일 */
+    .header_fade {
+        position: relative; /* 부모 요소를 기준으로 자식 요소들을 배치 */
+        display: flex; /* flex 컨테이너로 설정하여 요소들을 가로로 정렬 */
+    }
+
+    .header_fade .active,
+    .header_fade .disactive {
+        transition: opacity 1s ease; /* 1초 동안 은은하게 페이드 효과 적용 */
+        position: absolute; /* 부모 요소를 기준으로 위치 설정 */
+        top: 0; /* 부모 요소의 맨 위쪽에 위치 */
+        left: 0; /* 부모 요소의 맨 왼쪽에 위치 */
+        width: 100%; /* 부모 요소의 100% 너비 */
+    }
+
+    .header_fade .disactive {
+        opacity: 0; /* 초기에 disactive 요소를 투명하게 설정하여 숨김 */
+        z-index: 1; /* disactive 요소를 active 요소 위에 배치하여 겹치도록 함 */
+    }
