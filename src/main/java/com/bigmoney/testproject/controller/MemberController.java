@@ -45,7 +45,7 @@ public class MemberController {
 	}
 	@GetMapping("/member/test")
 	public String ttt() {
-		return "homeTest";
+		return "mainTest";
 	}
 	@PostMapping("/member/update")
 	public ModelAndView modify(@RequestParam Map<String, Object> map) {		
