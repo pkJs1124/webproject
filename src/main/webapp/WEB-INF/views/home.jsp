@@ -39,6 +39,7 @@
 						<a href="#" class="user_detail"> User <!-- <img src="#"> -->
 						</a> <a href="#" class="search"> Search <!-- <img src="#"> -->
 						</a>
+						
 					</div>
 				</div>
 
